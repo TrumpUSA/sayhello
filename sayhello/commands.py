@@ -24,7 +24,7 @@ def initdb(drop):
 
 
 @app.cli.command()
-@click.option('--count', default=20, help='Quantity of messages, default is 20.')
+@click.option('--count', default=200, help='Quantity of messages, default is 20.')
 def forge(count):
     """Generate fake messages."""
     from faker import Faker
@@ -44,4 +44,12 @@ def forge(count):
         db.session.add(message)
 
     db.session.commit()
+    click.echo('Created %d fake messages.' % count)
+
+
+@app.cli.command()
+@click.option('--count', default=200, help='Quantity of messages, default is 20.')
+def test(count):
+    """Generate fake messages."""
+    click.echo('Working...  test command')
     click.echo('Created %d fake messages.' % count)
